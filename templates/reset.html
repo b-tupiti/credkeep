@@ -1,0 +1,60 @@
+{% extends 'base_generic.html' %} {% block content %}
+<style>
+  input[type="password"] {
+    width: 100%;
+    padding: 0.3rem 15px;
+    background: rgb(42, 47, 51);
+    border: none;
+    margin-right: 3px;
+    color: white;
+    outline: none;
+  }
+
+  input[type="email"]:focus {
+    outline: none;
+  }
+</style>
+
+<form
+  class="form p-4 text-white fw-light"
+  style="width: 800px; background: rgba(43, 49, 54, 0.8)"
+  method="POST"
+>
+  {% csrf_token %}
+  <h4>Enter new password</h4>
+
+  <p>
+    Please enter your new password twice so we can verify you typed it in
+    correctly.
+  </p>
+
+  <br />
+
+  <div class="mb-3 row">
+    <label class="col-sm-4 fw-bold text-secondary"
+      >{{form.new_password1.label}}
+    </label>
+    <div class="col-sm-8">{{form.new_password1}}</div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-4 fw-bold text-secondary"
+      >{{form.new_password2.label}}
+    </label>
+    <div class="col-sm-8">{{form.new_password2}}</div>
+  </div>
+ 
+
+  <div class="text-end">
+    <button
+      type="submit"
+      class="btn btn-sm text-white ps-4 pe-4 pt-2 pb-2 fw-bold "
+      style="height: fit-content; background: #404850"
+      style="width: 3.5rem"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+
+{% endblock %}

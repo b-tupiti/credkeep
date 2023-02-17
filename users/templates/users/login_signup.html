@@ -1,0 +1,128 @@
+<!-- prettier-ignore -->
+{% extends 'base_generic.html' %}
+{% load socialaccount %}
+{% block content %}
+
+<div>
+  {% if page == 'login' %}
+  <form
+    class="p-4 pt-2 text-white"
+    style="width: 800px; background: rgba(43, 49, 54, 0.6)"
+    method="post"
+  >
+    {% csrf_token %}
+
+    <h6 class="text-gray p-2 mb-3 lead">Login to your account</h6>
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label fw-bold text-secondary"
+        >Username:
+      </label>
+      <div class="col-sm-10">
+        <input
+          class="form-control shadow-none rounded-1 border-0 text-white border-secondary bg-dark"
+          type="text"
+          name="username"
+          id=""
+        />
+      </div>
+    </div>
+
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label fw-bold text-secondary"
+        >Password:
+      </label>
+      <div class="col-sm-10">
+        <input
+          class="form-control shadow-none rounded-1 border-0 text-white border-secondary bg-dark"
+          type="password"
+          name="password"
+          id=""
+        />
+      </div>
+    </div>
+
+    <div class="text-end d-flex flex-row-reverse">
+      <button
+        class="google btn btn-sm text-dark ps-4 pe-4 pt-2 pb-2"
+        style="height: fit-content; background: #dfdfdf"
+        type="button"
+      >
+        <small
+          >Sign in with Google<i class="text-primary ms-2 bi bi-google"></i
+        ></small>
+      </button>
+
+      <button
+        type="submit"
+        class="btn btn-sm text-white ps-4 pe-4 pt-2 pb-2 fw-bold me-3"
+        style="height: fit-content; background: #404850"
+        style="width: 3.5rem"
+      >
+        Login
+      </button>
+
+      <a
+        class="text-decoration-none text-white me-4 align-self-center"
+        style="height: fit-content"
+        href="{% url 'reset_password' %}"
+      >
+        <small>Forgot your password?</small>
+      </a>
+    </div>
+    <p class="text-end mt-5 pe-4">
+      <small>
+        Do not have an account?
+        <a class="ms-3 text-white" href="{% url 'signup' %}">Sign Up</a>
+      </small>
+    </p>
+  </form>
+  {% else %}
+
+  <form
+    class="p-4 pt-2 text-white"
+    style="width: 800px; background: rgba(43, 49, 54, 0.6)"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    {% csrf_token %}
+
+    <h6 class="text-gray p-2 mb-3 lead fw-bold">Sign Up</h6>
+
+    {% for field in form %}
+    <div class="mb-3 row">
+      <label class="col-sm-2 col-form-label fw-bold text-secondary"
+        >{{field.label}}</label
+      >
+      <div class="col-sm-10">{{field}}</div>
+    </div>
+
+    {% endfor %}
+
+    <div class="text-end">
+      <button type="submit" class="btn btn-sm btn-primary mb-4">Sign Up</button>
+      <p>
+        <small>
+          Already have an account?
+          <a
+            class="text-decoration-none ms-2 text-white fw-bold"
+            href="{% url 'login' %}"
+            >Login</a
+          >
+        </small>
+      </p>
+    </div>
+  </form>
+
+  {% endif %}
+</div>
+
+<script>
+  // href="{% provider_login_url 'google' %}"
+  let googleBtn = document.getElementsByClassName("google");
+  googleBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    console.log("Hellow");
+  });
+</script>
+{% endblock %}

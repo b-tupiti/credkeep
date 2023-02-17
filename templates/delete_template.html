@@ -1,0 +1,21 @@
+{% extends 'base_generic.html' %} {% block content %}
+
+<form
+  class="p-4 pt-2 text-white"
+  style="width: 800px; background: rgba(43, 49, 54, 0.6)"
+  method="post"
+>
+  {% csrf_token %}
+
+  <p>
+    Are you sure you want to delete your account? All your credentials will be lost.
+  </p>
+
+  <div class="text-end">
+    <button type="submit" class="btn btn-sm btn-primary border-gray">
+      Yes, I Confirm.
+    </button>
+    <a class="btn btn-sm btn-danger" href="{% url 'profile' %}">Cancel</a>
+  </div>
+</form>
+{% endblock %}

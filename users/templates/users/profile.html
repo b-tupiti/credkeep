@@ -1,0 +1,89 @@
+{% extends 'base_generic.html' %} {% block content %}
+<div class="text-white p-3" style="background: rgba(43, 49, 54, 0.6)">
+  <div class="row">
+    <div class="col-lg-4">
+      <h6 class="text-white p-4" style="background: rgba(43, 49, 54, 0.7)">
+        <i class="bi bi-person-circle me-3"></i>
+        <span class="pe-4"> My Profile</span>
+        <a
+          class="text-decoration-none text-secondary"
+          href="{% url 'edit-user-account' %}"
+          ><i class="bi bi-pencil float-end"></i
+        ></a>
+      </h6>
+    </div>
+    <div class="col-lg-8">
+      <a
+        href="{% url 'delete-account' %}"
+        class="btn btn-sm rounded-0 float-end border-0 border-bottom border-secondary"
+        style="color: #ababab"
+      >
+        <small
+          >Delete my account <i class="ms-2 bi bi-person-x-fill"></i
+        ></small>
+      </a>
+    </div>
+  </div>
+
+  <div class="row m-0 p-0">
+    <div class="col-lg-4 p-0 m-0">
+      <img
+        class="w-100"
+        style="height: 400px"
+        src="{{profile.imageURL}}"
+        alt=""
+      />
+    </div>
+    <div class="col-lg-8 bg-dark m-0 p-4">
+      <div class="h-100 d-flex flex-column justify-content-between">
+        <div>
+          <p
+            class="p-4 pt-2 pb-2"
+            style="background-color: rgba(47, 53, 58, 0.6)"
+          >
+            <strong
+              class="me-3 d-inline-block border-end text-end pe-3 text-secondary"
+              style="width: 100px"
+              >Username</strong
+            >
+            <small>{{profile.username}}</small>
+          </p>
+          <p
+            class="p-4 pt-2 pb-2"
+            style="background-color: rgba(47, 53, 58, 0.6)"
+          >
+            <strong
+              class="me-3 d-inline-block border-end text-end pe-3 text-secondary"
+              style="width: 100px"
+              >Name</strong
+            >
+            <small>{{profile.first_name}} {{profile.last_name}}</small>
+          </p>
+          <p
+            class="p-4 pt-2 pb-2"
+            style="background-color: rgba(47, 53, 58, 0.6)"
+          >
+            <strong
+              class="me-3 d-inline-block border-end text-end pe-3 text-secondary"
+              style="width: 100px"
+              >Email</strong
+            >
+            <small>{{profile.email}}</small>
+          </p>
+        </div>
+
+        <div class="text-end">
+          <a
+            href="{% url 'change-password' %}"
+            class="btn btn-sm btn-primary border-0 p-2 ps-3 pe-3 rounded-1 box-shadow-1 text-decoration-none"
+            style="background-color: #274563"
+          >
+            <small> change your password</small></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

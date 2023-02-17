@@ -1,0 +1,92 @@
+<!-- prettier-ignore -->
+{% load static %}
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static 'images\logo.svg' %}" alt="" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+
+<!--  -->
+<div class="p-3 shadow-1" style="background-color: #30363c">
+  <div class="container d-flex offset-1 justify-content-between">
+    <div class="d-flex">
+      <h5 class="">
+        <span class="me-2"
+          ><a
+            class="text-decoration-none text-white"
+            href="{% url 'accounts' %}"
+            ><i class="bi bi-grid-fill"></i></a
+        ></span>
+        <a
+          class="icon btn btn-sm p-2 ps-3 pe-3 text-white me-4"
+          style="background-color: #414951"
+          aria-current="page"
+          href="{% url 'create-account' %}"
+        >
+          <span class=""
+            >Add Account <i class="ms-2 bi bi-plus-lg text-success"></i></span
+        ></a>
+      </h5>
+
+      <form
+        class="position-relative"
+        method="get"
+        action="{% url 'accounts' %}"
+      >
+        <input
+          class="form-control me-2 shadow-none border-0 rounded-3 text-white search-form"
+          style="background-color: #414951"
+          type="search"
+          placeholder="Find an account..."
+          aria-label="Search"
+          name="search_query"
+          value="{{search_query}}"
+        />
+        <button
+          class="btn text-white position-absolute end-0 top-0"
+          type="submit"
+        >
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+    </div>
+
+    {% if request.user.is_authenticated %}
+    <div>
+      <small style="color: rgb(220, 220, 220)" class="me-2"
+        >Welcome to your Keep,
+      </small>
+      <small style="color: rgb(231, 231, 231)" class="me-4 fw-bold"
+        > <a class="text-decoration-none text-white" href="{% url 'profile' %}">{{user}} <i class="ms-2 bi bi-person-circle"></i> </a> </small
+      >
+      <a
+        class="btn btn-sm text-white ps-4 pe-4 pt-2 pb-2 fw-bold"
+        style="height: fit-content; background: #404850"
+        href="{% url 'logout' %}"
+        >Logout</a
+      >
+    </div>
+
+    {% else %}
+    <a
+      class="btn btn-sm text-white ps-4 pe-4 pt-2 pb-2 fw-bold"
+      style="height: fit-content; background: #404850"
+      href="{% url 'login' %}"
+      >Login</a
+    >
+    {% endif %}
+  </div>
+</div>
