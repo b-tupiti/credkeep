@@ -79,11 +79,7 @@ Serve the application
 
 ### Notes
  
-This app  is in continuous development. 
-
-However, at this stage, I think it might come in handy for the busy proffessional who either keeps forgetting his/her credentials, or has just too many he lost count. 
-
-Feel free to obtain it and use it in your local environment. 
+This app  is in continuous development. However, I think it might be handy for local usage.
 
 
 ### Screenshot
